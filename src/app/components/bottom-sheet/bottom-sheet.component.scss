@@ -1,0 +1,43 @@
+:host {
+  display: grid;
+  background: #333;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  min-height: 0vh;
+  transition: height 0.3s ease;
+}
+
+.img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: clip;
+  position: absolute;
+  z-index: -1;
+
+  img {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+  }
+}
+
+.pull-block {
+  display: grid;
+  place-items: center;
+  padding-block: 0.75rem;
+  background: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+}
+
+.content {
+  height: 100%;
+  overflow-y: scroll;
+  background: #333;
+  padding-inline: 1rem;
+}

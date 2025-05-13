@@ -1,0 +1,11 @@
+:host {
+  --item-gap: 16px;
+
+  display: block;
+}
+
+h3,
+p {
+  margin: 0;
+  margin-top: var(--item-gap);
+}

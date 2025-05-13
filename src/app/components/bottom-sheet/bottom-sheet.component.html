@@ -1,0 +1,18 @@
+<div class="img-wrapper">
+	<img src="img/bg_2.png" alt="">
+</div>
+<div class="pull-block"
+  (touchstart)="onTouchStart($event)"
+  (touchmove)="onTouchMove($event)"
+  (touchend)="onTouchEnd()"
+>
+	<span>pull</span>
+</div>
+<div class="content" #content>
+	<app-search/>
+	@if(dataSvc.places().length > 0){
+		<app-list [places]="filteredPlaces"/>
+	}@else {
+		<p>Загрузка контента...</p>
+	}
+</div>

@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "Place 1",
+        "description": "Description 1",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_2.png"
+    },
+    {
+        "id": 2,
+        "name": "Place 2",
+        "description": "Description 2",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_3.jpg"
+    },
+    {
+        "id": 3,
+        "name": "Place 3",
+        "description": "Description 3",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_2.png"
+    },
+    {
+        "id": 4,
+        "name": "Place 4",
+        "description": "Description 4",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_3.jpg"
+    },
+    {
+        "id": 5,
+        "name": "Place 5",
+        "description": "Description 5",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_2.png"
+    },
+    {
+        "id": 6,
+        "name": "Place 6",
+        "description": "Description 6",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_2.png"
+    },
+    {
+        "id": 7,
+        "name": "Place 7",
+        "description": "Description 7",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_3.jpg"
+    },
+    {
+        "id": 8,
+        "name": "Place 7",
+        "description": "Description 8",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
+        "imageUrl": "img/bg_2.png"
+    }
+]

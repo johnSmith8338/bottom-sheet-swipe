@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, sans-serif;
+    font-size: 20px;
+    color: #333;
+    background: #fff;
+
+    @media (prefers-color-scheme: dark) {
+        color: #fff;
+        background: #333;
+    }
+
+    @media (max-width:1023px) {
+        font-size: 16px;
+    }
+}
+
+img {
+    display: block;
+    width: 100%;
+    height: auto;
+}

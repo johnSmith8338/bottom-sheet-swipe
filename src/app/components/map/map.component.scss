@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  height: 100vh;
+}
+
+.map-wrapper {
+  height: 100%;
+  width: 100%;
+  background: beige;
+  position: relative;
+  overflow: clip;
+}
+
+img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+}
