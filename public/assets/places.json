@@ -1,58 +1,309 @@
-[
-    {
-        "id": 1,
-        "name": "Place 1",
-        "description": "Description 1",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_2.png"
-    },
-    {
-        "id": 2,
-        "name": "Place 2",
-        "description": "Description 2",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_3.jpg"
-    },
-    {
-        "id": 3,
-        "name": "Place 3",
-        "description": "Description 3",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_2.png"
-    },
-    {
-        "id": 4,
-        "name": "Place 4",
-        "description": "Description 4",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_3.jpg"
-    },
-    {
-        "id": 5,
-        "name": "Place 5",
-        "description": "Description 5",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_2.png"
-    },
-    {
-        "id": 6,
-        "name": "Place 6",
-        "description": "Description 6",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_2.png"
-    },
-    {
-        "id": 7,
-        "name": "Place 7",
-        "description": "Description 7",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_3.jpg"
-    },
-    {
-        "id": 8,
-        "name": "Place 7",
-        "description": "Description 8",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium veritatis ad delectus quas quisquam alias laudantium id sint sed non!",
-        "imageUrl": "img/bg_2.png"
-    }
-]
+{
+    "theatre": [
+        {
+            "id": 1,
+            "uid": "erevan-plaza",
+            "name": "Синема Стар Ереван Плаза",
+            "city_id": 1,
+            "address": " г.Москва, ул. Большая Тульская, 13",
+            "longitude": 37.622141,
+            "latitude": 55.708658,
+            "image": "https://static.cinemastar.ru/theatre/gallery/1/19/bg.jpg?_=2523079442",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/1/19/bg.jpg?_=2523079442",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/1/19/preview.jpg?_=2523079442"
+                }
+            },
+            "metro": [
+                "Автозаводская",
+                "Тульская"
+            ],
+            "options": [
+                "6 залов",
+                " vip-зал",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 2,
+            "uid": "na-leninskom",
+            "name": "Синема Стар на Ленинском",
+            "city_id": 1,
+            "address": "г. Москва, Ленинский пр-кт, вл. 109",
+            "longitude": 37.513601,
+            "latitude": 55.664072,
+            "image": "https://static.cinemastar.ru/theatre/gallery/2/22/bg.jpg?_=857171289",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/2/22/bg.jpg?_=857171289",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/2/22/preview.jpg?_=857171289"
+                }
+            },
+            "metro": [
+                "Калужская",
+                "Проспект Вернадского",
+                "Новаторская"
+            ],
+            "options": [
+                "8 залов",
+                " vip-зал",
+                " бесплатная парковка",
+                " игровая зона",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 4,
+            "uid": "avenue",
+            "name": "Синема Стар Юго-Западная",
+            "city_id": 1,
+            "address": "г. Москва, пр-т Вернадского, д. 86а",
+            "longitude": 37.481001,
+            "latitude": 55.663024,
+            "image": "https://static.cinemastar.ru/theatre/gallery/4/25/bg.jpg?_=2478570482",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/4/25/bg.jpg?_=2478570482",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/4/25/preview.jpg?_=2478570482"
+                }
+            },
+            "metro": [
+                "Юго-Западная"
+            ],
+            "options": [
+                "7 залов",
+                " vip-зал",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 7,
+            "uid": "maryina-roscha",
+            "name": "Синема Стар Марьина роща",
+            "city_id": 1,
+            "address": "г. Москва, Шереметьевская ул., д. 6, к.1",
+            "longitude": 37.617141,
+            "latitude": 55.795433,
+            "image": "https://static.cinemastar.ru/theatre/gallery/7/28/bg.jpg?_=4128593089",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/7/28/bg.jpg?_=4128593089",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/7/28/preview.jpg?_=4128593089"
+                }
+            },
+            "metro": [
+                "Марьина роща"
+            ],
+            "options": [
+                "5 залов",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 10,
+            "uid": "na-akademicheskoy",
+            "name": "Синема Стар на Академической",
+            "city_id": 1,
+            "address": " г. Москва, ул. Б. Черемушкинская, д. 1",
+            "longitude": 37.602507,
+            "latitude": 55.689564,
+            "image": "https://static.cinemastar.ru/theatre/gallery/10/44/bg.jpg?_=919461175",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/10/44/bg.jpg?_=919461175",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/10/44/preview.jpg?_=919461175"
+                }
+            },
+            "metro": [
+                "Академическая",
+                "Ленинский Проспект",
+                "Тульская"
+            ],
+            "options": [
+                "6 залов",
+                " бесплатная парковка",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 12,
+            "uid": "prince-plaza",
+            "name": "Синема Стар Принц Плаза",
+            "city_id": 1,
+            "address": "г. Москва, ул. Профсоюзная, д. 129а",
+            "longitude": 37.507526,
+            "latitude": 55.618062,
+            "image": "https://static.cinemastar.ru/theatre/gallery/12/42/bg.jpg?_=4185494310",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/12/42/bg.jpg?_=4185494310",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/12/42/preview.jpg?_=4185494310"
+                }
+            },
+            "metro": [
+                "Теплый Стан"
+            ],
+            "options": [
+                "10 залов",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 15,
+            "uid": "dmitrovka",
+            "name": "Синема Стар Дмитровка",
+            "city_id": 1,
+            "address": "г. Москва, Дмитровское шоссе, д. 163А",
+            "longitude": 37.540001,
+            "latitude": 55.909895,
+            "image": "https://static.cinemastar.ru/theatre/gallery/15/48/bg.jpg?_=1651460257",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/15/48/bg.jpg?_=1651460257",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/15/48/preview.jpg?_=1651460257"
+                }
+            },
+            "metro": [
+                "Алтуфьево"
+            ],
+            "options": [
+                "9 залов",
+                " vip-зал",
+                " бесплатная уличная парковка",
+                " игровая зона",
+                " кинобар",
+                " детский кинозал"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 16,
+            "uid": "evropark",
+            "name": "Синема Стар Европарк",
+            "city_id": 1,
+            "address": "г. Москва, Рублёвское шоссе, д. 62",
+            "longitude": 37.380186,
+            "latitude": 55.767109,
+            "image": "https://static.cinemastar.ru/theatre/gallery/16/39/bg.jpg?_=743585816",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/16/39/bg.jpg?_=743585816",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/16/39/preview.jpg?_=1532299406"
+                }
+            },
+            "metro": [
+                "Крылатское"
+            ],
+            "options": [
+                "5 залов",
+                " vip-зал",
+                " бесплатная парковка",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 20,
+            "uid": "reutov",
+            "name": "Синема Стар Реутов",
+            "city_id": 1,
+            "address": "г. Москва, 2-й км МКАД, д. 2",
+            "longitude": 37.844989,
+            "latitude": 55.764671,
+            "image": "https://static.cinemastar.ru/theatre/gallery/20/35/bg.jpg?_=4137669085",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/20/35/bg.jpg?_=4137669085",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/20/35/preview.jpg?_=4137669085"
+                }
+            },
+            "metro": [
+                "Новогиреево"
+            ],
+            "options": [
+                "11 залов",
+                " парковка (2 часа – бесплатно",
+                " далее – 100 руб./час)",
+                " игровая зона",
+                " кинобар",
+                " детский кинозал"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        },
+        {
+            "id": 22,
+            "uid": "kvartal",
+            "name": "Синема Стар МФК Kvartal West",
+            "city_id": 1,
+            "address": "Москва, Аминьевское шоссе, д.6",
+            "longitude": 37.456827,
+            "latitude": 55.707299,
+            "image": "https://static.cinemastar.ru/theatre/gallery/22/32/bg.jpg?_=332265420",
+            "media": {
+                "image": {
+                    "big": "https://static.cinemastar.ru/theatre/gallery/22/32/bg.jpg?_=332265420",
+                    "small": "https://static.cinemastar.ru/theatre/gallery/22/32/preview.jpg?_=332265420"
+                }
+            },
+            "metro": [
+                "Кунцевская",
+                "Давыдково",
+                "Аминьевская"
+            ],
+            "options": [
+                "6 залов",
+                " vip-зал",
+                " бесплатная парковка",
+                " кинобар"
+            ],
+            "hall_cnt": 0,
+            "phone_support": "8 (495) 988-03-33",
+            "working_hours": "10:00 - 00:00",
+            "concession_sales": false,
+            "sale_permission": true
+        }
+    ]
+}

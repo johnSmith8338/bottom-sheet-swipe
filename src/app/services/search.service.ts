@@ -22,9 +22,12 @@ export class SearchService {
     const lowerQuery = query.toLowerCase();
     const filtered = this.places().filter(
       (place) =>
-        place.name.toLowerCase().includes(lowerQuery) ||
-        place.description.toLowerCase().includes(lowerQuery) ||
-        place.text.toLowerCase().includes(lowerQuery)
+        /**
+         * можно добавить фильтрацию по другим полям
+         */
+        place.name.toLowerCase().includes(lowerQuery)
+      // || place.address.toLowerCase().includes(lowerQuery)
+
     );
     this.filteredPlaces.set(filtered);
   }
