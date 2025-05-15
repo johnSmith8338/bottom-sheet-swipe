@@ -1,17 +1,14 @@
 :host {
   --item-gap: 16px;
 
-  display: block;
+  display: grid;
+  gap: var(--item-gap);
   padding-block: var(--item-gap);
 }
 
 h3,
 p {
   margin: 0;
-}
-
-h3 {
-  margin-top: var(--item-gap);
 }
 
 p {
@@ -24,6 +21,6 @@ p {
 
 .options {
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: 12px;
   opacity: 0.6;
 }
