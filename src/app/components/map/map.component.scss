@@ -1,6 +1,12 @@
 :host {
-  display: block;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
   height: 100vh;
+
+  @media (width < 1024px) {
+    grid-template-columns: 1fr;
+
+  }
 }
 
 .map-wrapper {

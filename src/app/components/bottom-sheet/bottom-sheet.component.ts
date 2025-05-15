@@ -1,10 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, effect, ElementRef, HostBinding, inject, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, computed, effect, ElementRef, HostBinding, inject, signal, ViewChild } from '@angular/core';
 import { ListComponent } from './elements/list/list.component';
 import { MapService } from '../../services/map.service';
 import { Place } from '../../models/model';
 import { SearchComponent } from '../search/search.component';
 import { SearchService } from '../../services/search.service';
 import { DataService } from '../../services/data.service';
+import { ResponsiveService } from '../../services/responsive.service';
 
 @Component({
   selector: 'app-bottom-sheet',
@@ -23,34 +24,54 @@ export class BottomSheetComponent {
   dataSvc = inject(DataService);
   private cdr = inject(ChangeDetectorRef);
   private elementRef = inject(ElementRef);
+  private responsiveSvc = inject(ResponsiveService);
 
   filteredPlaces: Place[] = [];
   private isDragging = false;
   private startY = 0;
-  private initialHeight = 0;
-  private currentHeight = this.initialHeight;
+  private initialHeight = signal(0);
+  private currentHeight = signal(this.initialHeight());
   private minHeight = 0;
-  private swipeThreshold = 2;
+  private swipeThreshold = 0.5;
+  private maxHostHeight = signal(false);
+
+  @HostBinding('class') get hostClass() {
+    return {
+      'max-height': this.maxHostHeight(),
+    }
+  }
+
+  // @HostBinding('style.height') hostHeight = this.initialHeight + 'vh';
+  @ViewChild('content') content!: ElementRef;
+  @ViewChild('pullBlock') pullBlock!: ElementRef;
+
+  private pullBlockHeight = computed(() => {
+    if (this.pullBlock && this.pullBlock.nativeElement) {
+      const heightPx = this.pullBlock.nativeElement.offsetHeight;
+      const heightVh = (heightPx / window.innerHeight) * 100;
+      return heightVh;
+    }
+    return 0;
+  });
 
   maxHeight = computed(() => {
     const itemHeight = this.mapSvc.itemPlaceHeight();
     const itemGap = this.mapSvc.itemGap();
     const itemCount = this.mapSvc.itemCount();
+    const pullHeight = this.pullBlockHeight();
 
     if (itemHeight !== null && itemGap !== null && itemCount !== null && itemCount > 0) {
       const itemFullHeight = itemHeight + itemGap * 2;
       const totalHeight = itemFullHeight * itemCount;
-      const calculatedMaxHeight = Math.min(totalHeight, 90);
+      const calculatedMaxHeight = Math.min(totalHeight, 100 - pullHeight);
       return calculatedMaxHeight;
     }
-    return 90;
+    return 100 - pullHeight;
   });
 
-  // @HostBinding('style.height') hostHeight = this.initialHeight + 'vh';
-  @ViewChild('content') content!: ElementRef;
-
   constructor() {
-    this.setHeight(this.currentHeight);
+    const currentHeight = this.currentHeight();
+    this.setHeight(currentHeight);
 
     effect(() => {
       const places = this.dataSvc.places();
@@ -66,17 +87,34 @@ export class BottomSheetComponent {
 
     effect(() => {
       const newMaxHeight = this.maxHeight();
-      if (this.currentHeight > newMaxHeight) {
-        this.currentHeight = newMaxHeight;
+      const isMobile = this.responsiveSvc.isMobile();
+
+      if (this.currentHeight() > newMaxHeight) {
+        this.currentHeight.set(newMaxHeight);
         this.initialHeight = this.currentHeight;
-        this.setHeight(this.currentHeight);
+        this.setHeight(this.currentHeight());
         this.cdr.detectChanges();
       }
-    });
+
+      const tolerance = 0.1;
+      const isAtMaxHeight = !isMobile || this.currentHeight() >= newMaxHeight - tolerance;
+      this.maxHostHeight.set(isAtMaxHeight);
+    }, { allowSignalWrites: true });
+
+    effect(() => {
+      const isMobile = this.responsiveSvc.isMobile();
+      const current = this.currentHeight();
+      this.setHeight(current);
+      console.log('Height updated - isMobile:', isMobile, 'currentHeight:', current.toFixed(2));
+    }, { allowSignalWrites: true });
   }
 
   private setHeight(height: number): void {
-    this.elementRef.nativeElement.style.height = `${height}vh`;
+    if (!this.responsiveSvc.isMobile()) {
+      this.elementRef.nativeElement.style.height = '100%';
+    } else {
+      this.elementRef.nativeElement.style.height = `${height.toFixed(2)}vh`;
+    }
   }
 
   onTouchStart(event: TouchEvent) {
@@ -97,12 +135,14 @@ export class BottomSheetComponent {
 
     const adjustedDeltaY = deltaY * this.swipeThreshold;
     const deltaHeight = (adjustedDeltaY / window.innerHeight) * 100;
-    this.currentHeight = Math.min(
-      Math.max(this.initialHeight + deltaHeight, this.minHeight),
+    const newHeight = Math.min(
+      Math.max(this.initialHeight() + deltaHeight, this.minHeight),
       this.maxHeight()
     );
+    this.currentHeight.set(newHeight);
 
-    this.setHeight(this.currentHeight);
+    this.setHeight(this.currentHeight());
+    this.cdr.detectChanges();
   }
 
   onTouchEnd() {
@@ -131,18 +171,19 @@ export class BottomSheetComponent {
 
     let targetHeight = 0;
     for (let i = 0; i < levels.length; i++) {
-      if (this.currentHeight < levels[i]) {
+      if (this.currentHeight() < levels[i]) {
         const threshold = levels[i - 1] + (itemHeight && itemHeight > 0 ? itemHeight / 2 : this.maxHeight() / 2);
-        targetHeight = this.currentHeight >= threshold ? levels[i] : levels[i - 1];
+        targetHeight = this.currentHeight() >= threshold ? levels[i] : levels[i - 1];
         break;
       }
     }
-    if (this.currentHeight >= levels[levels.length - 1]) {
+    if (this.currentHeight() >= levels[levels.length - 1]) {
       targetHeight = this.maxHeight();
     }
 
-    this.currentHeight = targetHeight;
-    this.setHeight(this.currentHeight);
+    this.currentHeight.set(targetHeight);
+    this.setHeight(this.currentHeight());
     this.initialHeight = this.currentHeight;
+    this.cdr.detectChanges();
   }
 }
