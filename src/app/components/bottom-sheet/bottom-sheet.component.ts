@@ -105,7 +105,6 @@ export class BottomSheetComponent {
       const isMobile = this.responsiveSvc.isMobile();
       const current = this.currentHeight();
       this.setHeight(current);
-      console.log('Height updated - isMobile:', isMobile, 'currentHeight:', current.toFixed(2));
     }, { allowSignalWrites: true });
   }
 
