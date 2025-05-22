@@ -33,11 +33,10 @@ export class BottomSheetComponent {
   private currentHeight = signal(this.initialHeight());
   private minHeight = 0;
   private swipeThreshold = 0.5;
-  private maxHostHeight = signal(false);
 
   @HostBinding('class') get hostClass() {
     return {
-      'max-height': this.maxHostHeight(),
+      'max-height': this.currentHeight() >= 90
     }
   }
 
@@ -83,22 +82,6 @@ export class BottomSheetComponent {
       const filtered = this.searchSvc.filteredPlaces();
       this.filteredPlaces = filtered;
       this.cdr.detectChanges();
-    }, { allowSignalWrites: true });
-
-    effect(() => {
-      const newMaxHeight = this.maxHeight();
-      const isMobile = this.responsiveSvc.isMobile();
-
-      if (this.currentHeight() > newMaxHeight) {
-        this.currentHeight.set(newMaxHeight);
-        this.initialHeight = this.currentHeight;
-        this.setHeight(this.currentHeight());
-        this.cdr.detectChanges();
-      }
-
-      const tolerance = 0.1;
-      const isAtMaxHeight = !isMobile || this.currentHeight() >= newMaxHeight - tolerance;
-      this.maxHostHeight.set(isAtMaxHeight);
     }, { allowSignalWrites: true });
 
     effect(() => {
