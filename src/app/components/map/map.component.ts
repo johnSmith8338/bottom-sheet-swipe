@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
 import { BottomSheetComponent } from '../bottom-sheet/bottom-sheet.component';
 import { MapService } from '../../services/map.service';
 import { DataService } from '../../services/data.service';
@@ -13,14 +13,16 @@ import { DataService } from '../../services/data.service';
   styleUrl: './map.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class MapComponent implements AfterViewInit {
+export class MapComponent {
   private mapSvc = inject(MapService);
   private dataSvc = inject(DataService);
 
-  ngAfterViewInit(): void {
-    setTimeout(() => {
+  constructor() {
+    effect(() => {
       const places = this.dataSvc.places();
-      this.mapSvc.initMap('map', places);
-    }, 0);
+      if (places.length > 0) {
+        this.mapSvc.initMap('map', places);
+      }
+    })
   }
 }

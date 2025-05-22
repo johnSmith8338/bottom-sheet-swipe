@@ -4,6 +4,10 @@
   top: 16px;
   left: 16px;
   right: 16px;
+
+  @media (width >=1024px) {
+    position: sticky;
+  }
 }
 
 .search-input {
