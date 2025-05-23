@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 
@@ -12,9 +12,15 @@ import { SearchService } from '../../services/search.service';
 })
 export class SearchComponent {
   private searchSvc = inject(SearchService);
-  query = '';
+  query = signal('');
 
-  onSearch() {
-    this.searchSvc.filterPlaces(this.query);
+  onSearch(value: string) {
+    this.query.set(value);
+    this.searchSvc.filterPlaces(this.query());
+  }
+
+  clearSearch() {
+    this.query.set('');
+    this.searchSvc.filterPlaces('');
   }
 }

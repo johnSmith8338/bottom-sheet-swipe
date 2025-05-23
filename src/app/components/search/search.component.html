@@ -1,7 +1,12 @@
-<input
-      type="text"
-      placeholder="Поиск..."
-      [(ngModel)]="query"
-      (ngModelChange)="onSearch()"
-      class="search-input"
-/>
+<div class="search-container">
+      <input
+            type="text"
+            placeholder="Поиск..."
+            [(ngModel)]="query"
+            (ngModelChange)="onSearch($event)"
+            class="search-input"
+      />
+      @if (query().length > 0) {
+            <button class="clear" (click)="clearSearch()">✕</button>
+      }
+</div>

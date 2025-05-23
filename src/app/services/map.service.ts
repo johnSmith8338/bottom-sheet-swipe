@@ -59,7 +59,7 @@ export class MapService {
         options: {
           selectOnClick: false, // Отключаем выделение кнопки при клике
           float: 'right', // Позиция справа
-          position: { bottom: `${window.innerHeight / 10}px`, right: '16px' }, // Позиция на карте
+          position: { bottom: `${window.innerHeight / 4}px`, right: '16px' }, // Позиция на карте
         },
       });
 
