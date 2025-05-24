@@ -1,8 +1,10 @@
 @for (item of places; track $index) {
-    <div class="item" #item>
-        <h3>{{ item.name }}</h3>
-        <p class="address">{{ item.address }}</p>
-        <p class="metro"><i>{{ item.metro.join(', ') }}</i></p>
-        <p class="options">{{ item.options.join(' ') }}</p>
+    <div class="item-wrapper" #item [class.active]="mapSvc.activePlaceId()===item.id">
+        <div class="item">
+            <h3>{{ item.name }}</h3>
+            <p class="address">{{ item.address }}</p>
+            <p class="metro"><i>{{ item.metro.join(', ') }}</i></p>
+            <p class="options">{{ item.options.join(' ') }}</p>
+        </div>
     </div>
 }

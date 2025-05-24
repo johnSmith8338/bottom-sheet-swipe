@@ -12,17 +12,18 @@ export class MapService {
   itemGap = signal<number | null>(null);
   itemCount = signal<number | null>(null);
   itemChildrenCount = signal<number | null>(null);
+  searchHeight = signal<number | null>(null);
 
   private responsiveSvc = inject(ResponsiveService);
 
   private map: any;
   private places: Place[] = [];
   private placemarks: any[] = [];
+  activePlaceId = signal<number | null>(null);
 
   constructor() {
     effect(() => {
       const isMobile = this.responsiveSvc.isMobile();
-      console.log('isMobile changed:', isMobile);
       if (this.map && this.places.length > 0) {
         console.log('Updating markers due to isMobile change');
         this.updateMarkers(this.places);
@@ -115,7 +116,10 @@ export class MapService {
 
         const placemark = new ymaps.Placemark(
           [place.latitude, place.longitude],
-          { hintContent },
+          {
+            hintContent,
+            placeId: place.id, // Сохраняем ID места в метке
+          },
           { preset: 'islands#redDotIcon' }
         );
 
@@ -123,6 +127,11 @@ export class MapService {
           this.map.setCenter([place.latitude, place.longitude], this.map.getZoom(), {
             duration: 300,
           });
+          if (this.activePlaceId() === place.id) {
+            this.activePlaceId.set(null); // Снимаем активное состояние
+          } else {
+            this.activePlaceId.set(place.id); // Устанавливаем активное место
+          }
         });
 
         this.map.geoObjects.add(placemark);

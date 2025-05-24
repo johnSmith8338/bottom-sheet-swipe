@@ -24,6 +24,18 @@ export class ListComponent implements AfterViewInit {
       const currentPlaces = this.placesSignal();
       this.cdr.detectChanges();
       setTimeout(() => this.updateMeasurements(), 0);
+
+      // Прокрутка к активному элементу
+      const activePlaceId = this.mapSvc.activePlaceId();
+      if (activePlaceId !== null) {
+        const activeIndex = this.places.findIndex((place) => place.id === activePlaceId);
+        if (activeIndex >= 0 && this.items) {
+          const activeElement = this.items.toArray()[activeIndex]?.nativeElement;
+          if (activeElement) {
+            activeElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      }
     });
   }
 

@@ -1,10 +1,12 @@
-import { Injectable, signal } from '@angular/core';
+import { inject, Injectable, signal } from '@angular/core';
 import { Place } from '../models/model';
+import { MapService } from './map.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SearchService {
+  private mapSvc = inject(MapService);
   private places = signal<Place[]>([]);
   filteredPlaces = signal<Place[]>([]);
 
@@ -14,6 +16,7 @@ export class SearchService {
   }
 
   filterPlaces(query: string) {
+    this.mapSvc.activePlaceId.set(null); // Сбрасываем активное место
     if (!query.trim()) {
       this.filteredPlaces.set(this.places());
       return;

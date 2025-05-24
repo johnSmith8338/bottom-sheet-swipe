@@ -4,6 +4,7 @@
   display: grid;
   gap: var(--item-gap);
   padding-block: var(--item-gap);
+  overflow-y: auto;
 }
 
 h3,
@@ -16,6 +17,19 @@ p {
 
   &:first-child {
     margin-top: var(--item-gap);
+  }
+}
+
+.item-wrapper {
+  interpolate-size: allow-keywords;
+  height: auto;
+  display: grid;
+  transition: height 0.3s ease-in-out, background 0.3s ease-in-out;
+
+  &.active {
+    background: grey;
+    height: 30vh;
+    align-items: center;
   }
 }
 
