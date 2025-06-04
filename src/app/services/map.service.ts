@@ -25,13 +25,12 @@ export class MapService {
     effect(() => {
       const isMobile = this.responsiveSvc.isMobile();
       if (this.map && this.places.length > 0) {
-        console.log('Updating markers due to isMobile change');
         this.updateMarkers(this.places);
       }
     });
   }
 
-  initMap(containerId: string, places: Place[]) {
+  initMap(containerId: string, places: Place[], zoom: number = 10) {
     this.places = places; // Сохраняем places
     this.placemarks = []; // Очищаем старые маркеры
 
@@ -42,8 +41,8 @@ export class MapService {
 
     ymaps.ready(() => {
       this.map = new ymaps.Map(containerId, {
-        center: [55.7558, 37.6173],
-        zoom: 10,
+        center: places.length > 0 ? [places[0].latitude, places[0].longitude] : [55.7558, 37.6173],
+        zoom: zoom,
         controls: [],
       });
 
@@ -141,7 +140,7 @@ export class MapService {
 
     if (places.length > 0) {
       const bounds = this.map.geoObjects.getBounds();
-      if (bounds) {
+      if (bounds && places.length > 1) {
         this.map.setBounds(bounds, { checkZoomRange: true });
       }
     }

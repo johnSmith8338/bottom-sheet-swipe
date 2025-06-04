@@ -32,7 +32,7 @@ export class BottomSheetComponent {
   private initialHeight = signal(0);
   private currentHeight = signal(this.initialHeight());
   private minHeight = 0;
-  private swipeThreshold = 0.5;
+  private swipeThreshold = 2;
 
   @HostBinding('class') get hostClass() {
     return {

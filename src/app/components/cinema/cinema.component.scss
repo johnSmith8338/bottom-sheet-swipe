@@ -1,6 +1,5 @@
 :host {
   display: block;
-  padding: 16px;
 }
 
 h2,
@@ -10,11 +9,22 @@ p {
 
 .back {
   color: inherit;
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  background: black;
+  padding: 4px 8px;
 }
 
 .cinema-details {
+  position: relative;
   display: grid;
   gap: 16px;
+  padding-inline: 16px;
+  padding-block-start: 24px;
+  background: #333;
+  will-change: transform;
 
   p {
     display: flex;
@@ -26,5 +36,86 @@ p {
         opacity: 0.6;
       }
     }
+  }
+}
+
+.map-wrapper {
+  height: 390px;
+  width: 100%;
+  background: beige;
+  position: relative;
+  overflow: clip;
+  will-change: transform;
+}
+
+::ng-deep {
+  .map-wrapper.open {
+    .custom-zoom-control {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .ymaps-2-1-79-float-button {
+    display: block !important;
+    height: auto !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .ymaps-2-1-79-float-button-text {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .custom-zoom-control {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: #fff;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .custom-zoom-control button {
+    background: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+  }
+
+  @media (hover:hover) {
+    .custom-zoom-control button:hover {
+      background: #005ea2;
+    }
+  }
+}
+
+.pull-block {
+  display: grid;
+  place-items: center;
+  padding-block: 0.75rem;
+  background: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;
+
+  @media (width>=1024px) {
+    display: none;
   }
 }
