@@ -1,0 +1,18 @@
+<a href="#" (click)="goBack($event)" class="back">назад</a>
+@if(isLoading()){
+    <p>Загрузка...</p>
+}@else if (cinema()) {
+    <div class="cinema-details">
+        <div id="cinema-map" class="map-wrapper"></div>
+        <h2>{{ cinema()!.name }}</h2>
+        <img [src]="cinema()!.media.image.big" alt="" class="cinema-image">
+        <p><span>Адрес:</span><span>{{ cinema()!.address }}</span></p>
+        <p><span>Метро:</span><span>{{ cinema()!.metro.join(', ') }}</span></p>
+        <p><span>Часы работы:</span><span>{{ cinema()!.working_hours }}</span></p>
+        <p><span>Телефон поддержки:</span><span>{{ cinema()!.phone_support }}</span></p>
+        <p><span>Опции:</span><span style="text-transform: uppercase;">{{ cinema()!.options.join(', ') }}</span></p>
+    </div>
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore quisquam consequuntur asperiores eaque? Magni delectus asperiores molestiae ipsa quaerat facere officia, suscipit repellat optio! Nulla autem ex cum minus facere error animi quisquam maiores necessitatibus! Rerum itaque odit sequi suscipit cum placeat dolorem accusantium ipsam non dolorum. Reiciendis optio fugit sapiente commodi ducimus? Deleniti saepe dolor deserunt doloribus suscipit optio facere, consequuntur molestias! Odio ab et molestiae minima perferendis? Architecto consequuntur quia nam voluptatum deserunt aliquid molestiae voluptas at fugit repellendus quod esse enim, minus optio explicabo temporibus recusandae! Dolores, vel laborum fugiat illo voluptate temporibus voluptas. Cum, quia aliquid fuga nulla soluta similique quis suscipit dicta natus, voluptatem, hic molestiae eius dolore. Quis tempore fugiat autem voluptates velit iure similique sunt? Natus, cumque! Voluptates voluptate nostrum accusantium maiores quam, exercitationem quibusdam tenetur assumenda magnam, consectetur eius nisi nesciunt quidem unde dolor facere reiciendis ex ullam inventore laborum corrupti dicta natus! Assumenda enim saepe, est earum magni sed ipsa. A iste amet repudiandae dicta fuga sapiente rem maiores perferendis voluptatem illo consectetur dolore, perspiciatis, fugiat magni. Dolores deleniti repudiandae voluptate veritatis earum facere vitae qui atque totam magnam, possimus saepe temporibus reiciendis, architecto enim ullam exercitationem sapiente numquam eius soluta nostrum dolorem excepturi explicabo? Cum dolor, natus perspiciatis quos incidunt voluptatem atque est accusamus ea aspernatur, iusto corporis! Id maiores inventore enim similique repudiandae nesciunt, suscipit laborum amet accusamus repellat quos alias quia quo quasi sunt dolorum qui error minus minima molestias sequi tempore. Voluptatum esse tenetur commodi eius? Voluptatem exercitationem omnis possimus, incidunt animi vero fugiat doloribus ab blanditiis? Quas officia aspernatur culpa eum repellat nisi saepe! Est debitis quasi qui accusantium voluptas ducimus beatae laboriosam optio dolore provident sunt non, eos aliquam laudantium, veniam veritatis nulla. Saepe sequi quas enim eligendi reiciendis blanditiis debitis pariatur? Rerum, deserunt dolorem.</p>
+} @else {
+    <p>Кинотеатр не найден</p>
+}

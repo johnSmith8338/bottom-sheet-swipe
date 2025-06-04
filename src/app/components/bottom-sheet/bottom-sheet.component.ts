@@ -69,8 +69,19 @@ export class BottomSheetComponent {
   });
 
   constructor() {
-    const currentHeight = this.currentHeight();
-    this.setHeight(currentHeight);
+    effect(() => {
+      const itemHeight = this.mapSvc.itemPlaceHeight();
+      const itemGap = this.mapSvc.itemGap();
+      if (itemHeight !== null && itemGap !== null) {
+        const itemFullHeight = itemHeight + itemGap * 2;
+        setTimeout(() => {
+          this.initialHeight.set(itemFullHeight);
+          this.currentHeight.set(itemFullHeight);
+          this.setHeight(this.currentHeight());
+          this.cdr.detectChanges();
+        }, 500);
+      }
+    }, { allowSignalWrites: true });
 
     effect(() => {
       const places = this.dataSvc.places();
@@ -165,7 +176,7 @@ export class BottomSheetComponent {
 
     this.currentHeight.set(targetHeight);
     this.setHeight(this.currentHeight());
-    this.initialHeight = this.currentHeight;
+    this.initialHeight.set(targetHeight);
     this.cdr.detectChanges();
   }
 }

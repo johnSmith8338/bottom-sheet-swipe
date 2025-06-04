@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, effect, ElementRef, inject, Input, QueryList, signal, ViewChild, ViewChildren } from '@angular/core';
 import { MapService } from '../../../../services/map.service';
 import { Place } from '../../../../models/model';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -13,6 +14,7 @@ import { Place } from '../../../../models/model';
 export class ListComponent implements AfterViewInit {
   mapSvc = inject(MapService);
   private cdr = inject(ChangeDetectorRef);
+  private router = inject(Router);
   @Input() places: Place[] = [];
   @ViewChild('item') firstItem!: ElementRef;
   @ViewChildren('item') items!: QueryList<ElementRef>;
@@ -45,6 +47,11 @@ export class ListComponent implements AfterViewInit {
 
   ngOnChanges(): void {
     this.placesSignal.set(this.places);
+  }
+
+  navigateToCinema(event: MouseEvent, id: number): void {
+    event.preventDefault();
+    this.router.navigate(['/cinema', id]);
   }
 
   private updateMeasurements(): void {

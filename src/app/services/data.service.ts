@@ -17,7 +17,7 @@ export class DataService {
     this.loadPlaces();
   }
 
-  private loadPlaces() {
+  loadPlaces() {
     this.http.get<PlacesResponse>('/assets/places.json').subscribe({
       next: (response) => {
         this.places.set(response.theatre);
